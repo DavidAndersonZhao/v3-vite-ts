@@ -14,19 +14,23 @@
           :name="item.name"
         >
           <!-- component标签: 它是Vue内置的标签,它的用途是可以动态绑定我们的组件,根据数据不同更换不同的组件. -->
-          <component :is="item.components"></component>
+          <div v-if="activeName == item.name">
+            <component :is="item.components"></component>
+          </div>
         </el-tab-pane>
       </el-tabs>
     </div>
     <div v-else>
-      <el-tabs v-model="activeName" @tab-click="tabClick">
+      <el-tabs v-model="activeNameTs" @tab-click="tsTabClick">
         <el-tab-pane
           v-for="item in tsTabs"
           :key="item.name"
           :label="item.label"
           :name="item.name"
         >
-          <component :is="item.components"></component>
+          <div v-if="activeNameTs == item.name">
+            <component :is="item.components"></component>
+          </div>
         </el-tab-pane>
       </el-tabs>
     </div>
@@ -53,7 +57,18 @@ import Watch from "./com/advanced/watch.vue";
 
 // TS
 import helloWorldTs from "@/views/BasicUseTS/helloWorld.vue";
-
+import BasicTs from "@/views/BasicUseTS/Basic.vue";
+import Demo1 from "@/views/BasicUseTS/Demo1.vue";
+import Demo2 from "@/views/BasicUseTS/Demo2.vue";
+import Demo3 from "@/views/BasicUseTS/Demo3.vue";
+import Demo4 from "@/views/BasicUseTS/Demo4.vue";
+import Demo5 from "@/views/BasicUseTS/Demo5.vue";
+import Demo6 from "@/views/BasicUseTS/Demo6.vue";
+import Demo7 from "@/views/BasicUseTS/Demo7.vue";
+import Demo8 from "@/views/BasicUseTS/Demo8.vue";
+import Demo9 from "@/views/BasicUseTS/Demo9.vue";
+import Demo10 from "@/views/BasicUseTS/Demo10.vue";
+// import Demo8New from "@/views/BasicUseTS/Demo8New.vue";
 
 // export default defineComponent({
 // components: { MySetup },
@@ -65,7 +80,8 @@ interface TabOption {
   name: string;
   components?: object;
 }
-let activeName: string = "first";
+let activeName = ref("first");
+let activeNameTs = ref("first");
 let value = ref(0);
 
 const tabs: TabOption[] = [
@@ -135,19 +151,88 @@ const tabs: TabOption[] = [
     components: WatchReactive,
   },
 ];
-const tsTabs:TabOption[] = [
-   {
+const tsTabs: TabOption[] = [
+  {
     label: "helloWorld",
     name: "first",
     components: helloWorldTs,
   },
-]
+  {
+    label: "basic",
+    name: "secound",
+    components: BasicTs,
+  },
+  {
+    label: "reactive&computed",
+    name: "third",
+    components: Demo1,
+  },
+  {
+    label: "toRefs",
+    name: "fourth",
+    components: Demo2,
+  },
+  {
+    label: "ref",
+    name: "fifth",
+    components: Demo3,
+  },
+  {
+    label: "computed",
+    name: "sixth",
+    components: Demo4,
+  },
+  {
+    label: "computed",
+    name: "seventh",
+    components: Demo4,
+  },
+  {
+    label: "watch",
+    name: "eighth",
+    components: Demo5,
+  },
+  {
+    label: "watchEffect",
+    name: "ninth",
+    components: Demo6,
+  },
+  {
+    label: "生命周期",
+    name: "tenth",
+    components: Demo7,
+  },
+   {
+    label: "provide",
+    name: "eleventh",
+    components: Demo8,
+  },
+   {
+    label: "onMounted",
+    name: "twelfth",
+    components: Demo9,
+  },
+    {
+    label: "hooks",
+    name: "thirteenth",
+    components: Demo10,
+  },
+  //  {
+  //   label: "useSSRContext",
+  //   name: "twelfth",
+  //   components: Demo8New,
+  // },
+];
 const handleClick = (num: number) => {
   value.value = num;
 };
-const tabClick = (tab: string, event: Event) => {
-  //   activeName = tab;
-  //   console.log(tab.label, event);
+const tabClick = (tab, event: Event) => {
+  activeName = tab;
+  // console.log(tab, event, activeName);
+};
+const tsTabClick = (tab, event: Event) => {
+  activeNameTs = tab;
+  // console.log(tab, event, activeNameTs);
 };
 </script>
 
