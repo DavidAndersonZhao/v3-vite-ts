@@ -2,8 +2,8 @@
   <div>
     <div class="xian"></div>
     <div style="display: flex">
-      <div @click="handleClick(1)" style="flex: 1">js写法</div>
-      <div @click="handleClick(2)" style="flex: 1">ts写法</div>
+      <div @click="handleClick(1)" :class="value == 1&&'red'" style="flex: 1">js写法</div>
+      <div @click="handleClick(2)" :class="value == 2&&'red'" style="flex: 1">ts写法</div>
     </div>
     <div v-if="value == 1">
       <el-tabs v-model="activeName" @tab-click="tabClick">
@@ -82,7 +82,7 @@ interface TabOption {
 }
 let activeName = ref("first");
 let activeNameTs = ref("first");
-let value = ref(0);
+let value = ref(1);
 
 const tabs: TabOption[] = [
   {
@@ -240,5 +240,8 @@ const tsTabClick = (tab, event: Event) => {
 .xian {
   height: 10px;
   background: red;
+}
+.red{
+  color: red;
 }
 </style>
