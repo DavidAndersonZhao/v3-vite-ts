@@ -18,9 +18,24 @@
         </el-tab-pane>
       </el-tabs>
     </div>
+    <div v-else>
+      <el-tabs v-model="activeName" @tab-click="tabClick">
+        <el-tab-pane
+          v-for="item in tsTabs"
+          :key="item.name"
+          :label="item.label"
+          :name="item.name"
+        >
+          <component :is="item.components"></component>
+        </el-tab-pane>
+      </el-tabs>
+    </div>
   </div>
 </template>
 <script lang="ts">
+// import { defineComponent } from "vue";
+import { ref } from "vue";
+
 import MySetup from "./com/base/setup.vue";
 import Todo from "./com/base/todo.vue";
 import TodoRef from "./com/base/todoRef.vue";
@@ -36,8 +51,10 @@ import FuzzyQuery from "./com/advanced/模糊查询.vue";
 import WatchReactive from "./com/advanced/watch-reactive.vue";
 import Watch from "./com/advanced/watch.vue";
 
-// import { defineComponent } from "vue";
-import { ref } from "vue";
+// TS
+import helloWorldTs from "@/views/BasicUseTS/helloWorld.vue";
+
+
 // export default defineComponent({
 // components: { MySetup },
 // });
@@ -118,6 +135,13 @@ const tabs: TabOption[] = [
     components: WatchReactive,
   },
 ];
+const tsTabs:TabOption[] = [
+   {
+    label: "helloWorld",
+    name: "first",
+    components: helloWorldTs,
+  },
+]
 const handleClick = (num: number) => {
   value.value = num;
 };

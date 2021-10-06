@@ -2,7 +2,7 @@ import { createRouter, createWebHashHistory } from "vue-router"; // createWebHas
 import Earchs from "../views/Earchs/index.vue";
 import BasicUseJS from "../views/BasicUseJS/index.vue";
 import Film from "../views/Film.vue";
-// import MyVuex from "../views/vuex/index.vue";
+import MyVuex from "../views/vuex/index.vue";
 const routes = [
   {
     path: "/earchs",
@@ -19,11 +19,11 @@ const routes = [
     name: 'ctx',
     component: Film,
   },
-  // {
-  //   path:'/vuex',
-  //   name:'vuex',
-  //   component:MyVuex,
-  // },
+  {
+    path:'/vuex',
+    name:'vuex',
+    component:MyVuex,
+  },
   // {
   //   path: "/",
   //   redirect: "/earchs",

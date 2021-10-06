@@ -20,8 +20,8 @@ const routerClick = (url: string) => {
   <!-- <img alt="Vue logo" src="./assets/logo.png" /> -->
   <div @click="handleClick">back</div>
   <div class="xian"></div>
-  <div style="display:flex" >
-  <!-- <div style="display:flex" v-show="$store.state.isShow"> -->
+  <!-- <div style="display:flex" > -->
+  <div style="display:flex" v-show="$store.state.isShow">
     <div
       v-for="(item, index) in routerList"
       :key="index"
