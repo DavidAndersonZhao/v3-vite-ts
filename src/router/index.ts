@@ -3,6 +3,7 @@ import Earchs from "../views/Earchs/index.vue";
 import BasicUseJS from "../views/BasicUseJS/index.vue";
 import Film from "../views/Film.vue";
 import MyVuex from "../views/vuex/index.vue";
+import Report from "../views/demo/Report.vue";
 const routes = [
   {
     path: "/earchs",
@@ -23,6 +24,11 @@ const routes = [
     path:'/vuex',
     name:'vuex',
     component:MyVuex,
+  },
+  {
+    path:'/report',
+    name:'report',
+    component:Report,
   },
   // {
   //   path: "/",
